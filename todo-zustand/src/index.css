@@ -1,0 +1,205 @@
+:root {
+  --bg: #f4f6fb;
+  --card: #ffffff;
+  --text: #1f2937;
+  --muted: #6b7280;
+  --primary: #6366f1;
+  --primary-dark: #4f46e5;
+  --border: #e5e7eb;
+  --danger: #ef4444;
+  --success: #10b981;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", sans-serif;
+  color: var(--text);
+  background: radial-gradient(circle at top, #e0e7ff, var(--bg) 60%);
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+
+/* ---------- layout ---------- */
+
+.app {
+  display: flex;
+  justify-content: center;
+  padding: 48px 16px;
+}
+
+.card {
+  width: 100%;
+  max-width: 560px;
+  padding: 28px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 22px;
+  box-shadow: 0 20px 60px rgba(79, 70, 229, 0.12);
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.header h1 {
+  margin: 0;
+  font-size: 36px;
+  font-weight: 800;
+  letter-spacing: -1px;
+  background: linear-gradient(90deg, #4f46e5, #8b5cf6);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.header p {
+  margin: 4px 0 0;
+  color: var(--muted);
+}
+
+/* ---------- form ---------- */
+
+.todo-form {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 18px;
+}
+
+.todo-form input {
+  flex: 1;
+  min-width: 0;
+  padding: 12px 14px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.todo-form input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+}
+
+.add-btn {
+  padding: 0 20px;
+  border: none;
+  border-radius: 12px;
+  background: var(--primary);
+  color: #fff;
+  font-weight: 600;
+}
+
+/* ---------- progress + toolbar ---------- */
+
+.progress {
+  height: 6px;
+  border-radius: 999px;
+  background: #eef2ff;
+  overflow: hidden;
+  margin-bottom: 14px;
+}
+
+.progress-bar {
+  height: 100%;
+  width: 0;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--primary), var(--success));
+}
+
+.toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.counter-number {
+  display: inline-block;
+  min-width: 1ch;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.clear-btn {
+  border: none;
+  background: none;
+  color: var(--danger);
+  font-size: 14px;
+  padding: 4px 6px;
+}
+
+.clear-btn:hover:not(:disabled) {
+  text-decoration: underline;
+}
+
+/* ---------- filters ---------- */
+
+.filters {
+  display: flex;
+  gap: 6px;
+  padding: 4px;
+  margin-bottom: 18px;
+  background: #f3f4f6;
+  border-radius: 12px;
+}
+
+.filter {
+  position: relative;
+  flex: 1;
+  padding: 8px 0;
+  border: none;
+  border-radius: 9px;
+  background: none;
+  color: var(--muted);
+  font-size: 14px;
+  text-transform: capitalize;
+}
+
+.filter.active {
+  color: var(--primary-dark);
+  font-weight: 600;
+}
+
+.filter-pill {
+  position: absolute;
+  inset: 0;
+  background: #fff;
+  border-radius: 9px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.filter-label {
+  position: relative;
+  z-index: 1;
+}
+
+@media (max-width: 480px) {
+  .app {
+    padding: 20px 12px;
+  }
+  .card {
+    padding: 20px;
+  }
+}
